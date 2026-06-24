@@ -33,7 +33,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
       <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-60 bg-[#0D0D0D] border-r border-[#1A1A1A] flex flex-col transition-transform duration-200 ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
         <div className="h-14 flex items-center gap-2.5 px-4 border-b border-[#1A1A1A]">
-          <Image src="/icon-192.png" alt="BarberIA" width={28} height={28} className="rounded-lg" />
+          <Image src="/icon-192.png" alt="BarberIA" width={28} height={28} className="rounded-lg" unoptimized />
           <span className="font-semibold text-sm tracking-tight">BarberIA CRM</span>
           <button onClick={() => setOpen(false)} className="ml-auto lg:hidden text-[#888888]"><X className="w-4 h-4" /></button>
         </div>
@@ -70,7 +70,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         <div className="lg:hidden h-14 border-b border-[#1A1A1A] flex items-center px-4 gap-3 flex-shrink-0">
           <button onClick={() => setOpen(true)} className="text-[#888888] hover:text-[#F5F5F5]"><Menu className="w-5 h-5" /></button>
           <div className="flex items-center gap-2">
-            <Image src="/icon-192.png" alt="BarberIA" width={24} height={24} className="rounded-md" />
+            <Image src="/icon-192.png" alt="BarberIA" width={24} height={24} className="rounded-md" unoptimized />
             <span className="text-sm font-semibold">BarberIA CRM</span>
           </div>
         </div>

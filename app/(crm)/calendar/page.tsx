@@ -180,7 +180,7 @@ export default function CalendarPage() {
             key: "service_id", label: "Servicio", type: "select", required: true,
             options: services.map((s) => ({ value: s.id, label: `${s.name} (${s.duration}min)` })),
           },
-          { key: "date", label: "Fecha",  type: "text", placeholder: "2025-06-24", required: true },
+          { key: "date", label: "Fecha",  type: "date", required: true },
           { key: "time", label: "Hora",   type: "time", required: true },
         ]}
         onSubmit={async (v) => { await createAppt.mutateAsync(v); }}

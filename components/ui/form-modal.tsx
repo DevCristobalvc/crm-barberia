@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export interface FormField {
   key: string;
   label: string;
-  type: "text" | "number" | "email" | "tel" | "time" | "select" | "textarea";
+  type: "text" | "number" | "email" | "tel" | "time" | "date" | "select" | "textarea";
   placeholder?: string;
   required?: boolean;
   min?: number;

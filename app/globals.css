@@ -63,7 +63,7 @@ select:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Selects en dark mode — iOS y Chrome por defecto ponen texto negro */
+/* Selects en dark mode */
 select {
   color: #F5F5F5;
   background-color: #1A1A1A;
@@ -71,4 +71,18 @@ select {
 select option {
   color: #F5F5F5;
   background-color: #1A1A1A;
+}
+
+/* Date & time pickers — fondo oscuro, acento dorado */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  color-scheme: dark;
+  accent-color: #D4AF37;
+  color: #F5F5F5;
+}
+
+/* Fuerza texto blanco en todos los inputs */
+input, textarea {
+  color: #F5F5F5;
 }

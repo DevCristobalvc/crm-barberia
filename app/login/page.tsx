@@ -41,7 +41,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2.5 mb-8">
-          <Image src="/icon-192.png" alt="BarberIA" width={36} height={36} className="rounded-xl" />
+          <Image src="/icon-192.png" alt="BarberIA" width={36} height={36} className="rounded-xl" unoptimized />
           <span className="text-xl font-semibold tracking-tight">BarberIA</span>
         </div>
 
