@@ -51,3 +51,24 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #444444;
 }
+
+/* Fix autofill — evita texto negro en fondo oscuro (Chrome/Safari) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #F5F5F5 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1A1A1A inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Selects en dark mode — iOS y Chrome por defecto ponen texto negro */
+select {
+  color: #F5F5F5;
+  background-color: #1A1A1A;
+}
+select option {
+  color: #F5F5F5;
+  background-color: #1A1A1A;
+}
