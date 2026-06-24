@@ -10,7 +10,7 @@
   --color-line: #2A2A2A;
   --color-muted: #888888;
   --color-dim: #444444;
-  --font-sans: var(--font-saira);
+  --font-sans: var(--font-inter);
 }
 
 :root {
