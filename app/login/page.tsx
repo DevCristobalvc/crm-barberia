@@ -1,6 +1,6 @@
 "use client";
 
-import { Scissors } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -41,9 +41,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2.5 mb-8">
-          <div className="w-9 h-9 bg-gold rounded-xl flex items-center justify-center">
-            <Scissors className="w-4.5 h-4.5 text-[#0A0A0A]" />
-          </div>
+          <Image src="/icon-192.png" alt="BarberIA" width={36} height={36} className="rounded-xl" />
           <span className="text-xl font-semibold tracking-tight">BarberIA</span>
         </div>
 
@@ -107,7 +105,9 @@ export default function LoginPage() {
         </div>
 
         <Link
-          href="/"
+          href="https://site-barberia.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
           className="block text-center text-sm text-[#555555] hover:text-[#888888] transition-colors mt-5"
         >
           ← Volver al inicio
