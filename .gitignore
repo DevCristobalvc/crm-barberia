@@ -56,3 +56,5 @@ secrets/
 # skills locales
 .agents/
 skills-lock.json
+
+.vercel

@@ -3,6 +3,7 @@
 import { shopApi, servicesApi } from "@/lib/api";
 import { SHOP_ID } from "@/lib/constants";
 import { formatCurrency } from "@/lib/utils";
+import { FormModal } from "@/components/ui/form-modal";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Save, Plus, Trash2, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -20,6 +21,7 @@ export default function SettingsPage() {
   const qc = useQueryClient();
   const [activeTab, setActiveTab] = useState<Tab>("general");
   const [saved, setSaved] = useState(false);
+  const [showAddService, setShowAddService] = useState(false);
 
   // Shop data
   const { data: shop, isLoading: shopLoading } = useQuery({
@@ -174,7 +176,9 @@ export default function SettingsPage() {
         <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl overflow-hidden">
           <div className="px-5 py-4 border-b border-[#1A1A1A] flex items-center justify-between">
             <h2 className="text-sm font-semibold">Servicios</h2>
-            <button className="flex items-center gap-1.5 px-3 py-1.5 border border-gold/30 text-gold text-xs rounded-lg hover:bg-gold/10 transition-colors">
+            <button
+              onClick={() => setShowAddService(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 border border-gold/30 text-gold text-xs rounded-lg hover:bg-gold/10 transition-colors">
               <Plus className="w-3.5 h-3.5" />
               Agregar
             </button>
@@ -237,6 +241,27 @@ export default function SettingsPage() {
           </div>
         </div>
       )}
+
+      <FormModal
+        open={showAddService}
+        onClose={() => setShowAddService(false)}
+        title="Agregar servicio"
+        submitLabel="Agregar"
+        fields={[
+          { key: "name",     label: "Nombre del servicio", type: "text",   placeholder: "Ej: Corte Clásico", required: true },
+          { key: "duration", label: "Duración (minutos)",  type: "number", placeholder: "30", required: true, min: 5 },
+          { key: "price",    label: "Precio (COP)",        type: "number", placeholder: "15000", required: true, min: 0 },
+        ]}
+        onSubmit={async (values) => {
+          await servicesApi.create({
+            shop_id: SHOP_ID,
+            name: values.name,
+            duration: parseInt(values.duration),
+            price: parseFloat(values.price),
+          });
+          qc.invalidateQueries({ queryKey: ["services", SHOP_ID] });
+        }}
+      />
     </div>
   );
 }
