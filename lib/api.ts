@@ -11,9 +11,15 @@ import type {
 
 const BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+// ngrok muestra una página de advertencia en el browser sin este header
+const BASE_HEADERS: Record<string, string> = {
+  "Content-Type": "application/json",
+  ...(BASE.includes("ngrok") ? { "ngrok-skip-browser-warning": "true" } : {}),
+};
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
-    headers: { "Content-Type": "application/json" },
+    headers: { ...BASE_HEADERS, ...(options?.headers as Record<string, string> ?? {}) },
     ...options,
   });
   if (!res.ok) {
