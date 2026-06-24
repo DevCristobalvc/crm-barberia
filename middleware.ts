@@ -5,7 +5,7 @@ const PUBLIC = ["/login", "/api/auth/login", "/api/auth/logout"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isAuth = request.cookies.get("barberia_admin")?.value === "true";
+  const isAuth   = request.cookies.get("barberia_admin")?.value === "true";
   const isPublic = PUBLIC.some((p) => pathname.startsWith(p));
 
   if (!isPublic && !isAuth) {
@@ -17,4 +17,9 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-export const config = { matcher: ["/((?!_next/static|_next/image|favicon.ico|public).*)"] };
+export const config = {
+  // Excluir archivos estáticos, imágenes y _next de forma explícita
+  matcher: [
+    "/((?!_next/static|_next/image|favicon\\.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.svg|.*\\.ico|.*\\.webp|.*\\.gif).*)",
+  ],
+};
